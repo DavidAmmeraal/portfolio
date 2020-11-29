@@ -5,20 +5,32 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@material-ui/core": "^4.9.10",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/system": "^4.9.10",
+    "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.19.7",
-    "gatsby-image": "^2.2.39",
+    "gatsby-image": "^2.2.42",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-offline": "^3.0.32",
     "gatsby-plugin-react-helmet": "^3.1.21",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "^2.4.3",
+    "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-transformer-remark": "^2.6.53",
     "gatsby-transformer-sharp": "^2.3.13",
+    "html-react-parser": "^0.10.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-typography": "^0.16.19",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "eslint-config-react-app": "^5.2.1",
     "prettier": "^1.19.1"
   },
   "keywords": [

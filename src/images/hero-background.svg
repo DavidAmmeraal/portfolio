@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1440 851" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="32.5375916%" x2="0%" y2="67.4624084%" id="linearGradient-1">
+            <stop stop-color="#085B75" offset="0%"></stop>
+            <stop stop-color="#1ABCDC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HeroBackgrond" fill="url(#linearGradient-1)">
+            <path d="M0,0 L1440,0 L1440,719.754182 C1345.42645,622.350978 1217.67636,573.649376 1056.74975,573.649376 C895.823138,573.649376 543.573221,666.099584 0,851 L0,0 Z" id="Rectangle"></path>
+        </g>
+    </g>
+</svg>
