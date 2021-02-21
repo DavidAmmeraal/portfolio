@@ -6,24 +6,21 @@
  */
 
 import React from "react"
+import Helmet from "react-helmet";
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import Background from "./background";
+import Container from "./container";
 
-const Layout = ({ children, path }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-  
+const Layout = (props: React.PropsWithChildren<{}>) => {
   return (
     <>
-      <Background />
+    <Helmet
+      bodyAttributes={{
+        class: "bg-gray-900 dark text-white"
+      }}
+    />
+    <Container>
+      {props.children}
+    </Container>
     </>
   );
 }

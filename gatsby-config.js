@@ -1,16 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `David Ammeraal`,
+    description: `David Ammeraal, a full-stack developer located in Hilversum.`,
+    author: `David Ammeraal`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `${__dirname}/src/data`,
+        path: `${__dirname}/src/content`,
       },
     },
     {
@@ -22,6 +23,10 @@ module.exports = {
     },
     `gatsby-transformer-remark`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {},
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -42,12 +47,30 @@ module.exports = {
         fonts: [
           `roboto\:300,400,500,700`,
           `roboto mono\:300,400,500,700`,
+          `poppins\:300,400,500,700`,
         ],
-        display: 'swap'
-      }
-    }
+        display: "swap",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /node_modules\/geticon\/logos/,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
+    //`gatsby-plugin-graphql-codegen`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

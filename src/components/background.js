@@ -12,9 +12,10 @@ const gradientKeyframes = keyframes`
 
 const BodyStyle = createGlobalStyle`
   body {
-    background: #545454 radial-gradient(circle at left, rgba(0,0,0,0.2) 0%, rgba(18,18,18,1) 50%);
+    background: rgba(18,18,18,1);
     background-size: 100vw 100vh;
     animation: ${gradientKeyframes} 2s ease-in-out;
+    background-attachment: fixed;
   }
 `;
 
