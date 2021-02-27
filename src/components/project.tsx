@@ -6,6 +6,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import styled from "styled-components";
 import tw from "twin.macro";
 import { ProjectFragment } from "../../graphql-types";
+import { focusClasses, textClasses } from "../classes";
 
 const Mono: React.FC<unknown> = (props) => (
   <p className="font-mono pt-3 text-xs" {...props} />
@@ -16,10 +17,6 @@ const shortcodes = {
 };
 
 const Box = styled.div`
-  :hover:before {
-    transform: scale(1.05);
-  }
-
   :before {
     ${tw`rounded-lg`}
     content: ' ';
@@ -27,8 +24,6 @@ const Box = styled.div`
     width: 100%;
     height: 100%;
     background-color: #121519;
-    transition: transform;
-    transition-duration: 0.2s;
     top: 0;
     left: 0;
   }
@@ -40,7 +35,7 @@ export type ProjectProps = {
 
 const Project: React.FunctionComponent<ProjectProps> = ({ data }) => {
   return (
-    <Box className="lg:w-96 w-full relative">
+    <Box className={cx("lg:w-96", "w-full", "relative")}>
       <div
         className={cx(
           "relative",
@@ -50,20 +45,21 @@ const Project: React.FunctionComponent<ProjectProps> = ({ data }) => {
           "duration-200",
           "transform",
           "hover:scale-105",
-          "hover:translate-x-2",
-          "hover:translate-y-2"
+          "focus:scale-105",
+          focusClasses
         )}
-        //style={{ backgroundColor: "#20252d"}}
+        tabIndex={0}
+        style={{ backgroundColor: "#20252d" }}
       >
         <header>
-          <p className="font-mono tracking-wide text-sm text-orange">
+          <p className={textClasses["subtitle"]}>
             {data?.frontmatter?.subtitle}
           </p>
-          <h3 className="text-xl font-bold tracking-widest">
+          <h3 className={textClasses["heading-2"]}>
             {data?.frontmatter?.title}
           </h3>
         </header>
-        <div className="text-gray-400 my-2.5 text-sm">
+        <div className="my-2.5 text-sm">
           <MDXProvider components={shortcodes}>
             <MDXRenderer>{data.body}</MDXRenderer>
           </MDXProvider>

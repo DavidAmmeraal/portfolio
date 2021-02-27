@@ -1,53 +1,67 @@
 import React from "react";
+import { Link } from "gatsby";
 import cx from "classnames";
 import styled from "styled-components";
-import tw from "twin.macro";
+import tw, { theme } from "twin.macro";
+import { focusClasses } from "../classes";
 
-const StyledButton = styled.button.attrs({
-  className: "relative",
-})`
-  :hover:before {
-    transform: scale(1.05);
-  }
+const StyledButton = styled.button``;
 
-  :before {
-    ${tw`rounded-3xl`}
-    content: ' ';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #121519;
-    transition: transform;
-    transition-duration: 0.2s;
-    top: 0;
-    left: 0;
-  }
-`
-
-type ButtonProps = React.HTMLAttributes<HTMLButtonElement>;
-
-const Button = (props: ButtonProps) => {
-  const { className, children, ...rest } = props;
-  return (
-    <StyledButton {...rest}>
-      <div
-        className={cx(
-          "relative",
-          "transition",
-          "duration-200",
-          "ease-in-out",
-          "rounded-3xl",
-          "transform",
-          "hover:scale-105",
-          "hover:translate-x-2",
-          "hover:translate-y-2",
-          className
-        )}
-      >
-        {children}
-      </div>
-    </StyledButton>
-  )
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  color: "orange" | "indigo";
+  href?: string;
+  busy?: boolean;
 }
+
+const colorClasses = {
+  indigo: "border-indigo-700 bg-indigo-700",
+  orange: "border-orange-500 bg-orange-500",
+} as const;
+
+const idleClasses = [
+  "hover:scale-110",
+  "focus:scale-105",
+  "hover:bg-opacity-70",
+  "active:bg-opacity-100",
+];
+
+const busyClasses = ["bg-opacity-100"];
+
+const Button: React.FC<ButtonProps> = (props) => {
+  const { className, children, color, href, busy, ...rest } = props;
+
+  const linkProps = href ? { href } : {};
+
+  return (
+    <StyledButton
+      as={href ? Link : "button"}
+      {...linkProps}
+      {...rest}
+      className={cx(
+        "relative",
+        "focus:outline-none",
+        "rounded-3xl",
+        "text-gray-50",
+        "transition",
+        "duration-50",
+        "bg-opacity-0",
+        "ease-in-out",
+        "transform",
+        "active:scale-100",
+        "font-medium",
+        "border-2",
+        "p-4",
+        "tracking-wider",
+        "whitespace-nowrap",
+        busy ? busyClasses : idleClasses,
+        colorClasses[color],
+        focusClasses,
+        className
+      )}
+    >
+      {children}
+    </StyledButton>
+  );
+};
 
 export default Button;

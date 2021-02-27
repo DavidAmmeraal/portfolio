@@ -5,28 +5,26 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React from "react";
 import Helmet from "react-helmet";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import Container from "./container";
 
-const Layout = (props: React.PropsWithChildren<{}>) => {
+const Layout: React.FC = (props) => {
   return (
     <>
-    <Helmet
-      bodyAttributes={{
-        class: "bg-gray-900 dark text-white"
-      }}
-    />
-    <Container>
-      {props.children}
-    </Container>
+      <Helmet
+        bodyAttributes={{
+          class: "bg-gray-900 dark text-white",
+        }}
+      />
+      <Container>{props.children}</Container>
     </>
   );
-}
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

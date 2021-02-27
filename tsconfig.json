@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*", "./graphql-types.ts"],
+  "include": ["./src/**/*", "./graphql-types.ts", "./custom.d.ts"],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",

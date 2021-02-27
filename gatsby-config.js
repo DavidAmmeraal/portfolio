@@ -44,11 +44,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          `roboto\:300,400,500,700`,
-          `roboto mono\:300,400,500,700`,
-          `poppins\:300,400,500,700`,
-        ],
+        fonts: [`roboto mono\:300,400,500,700`, `poppins\:300,400,500,700`],
         display: "swap",
       },
     },
@@ -56,7 +52,7 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /node_modules\/geticon\/logos/,
+          include: [/node_modules\/geticon\/logos/, /.inline.svg$/],
         },
       },
     },
@@ -68,6 +64,7 @@ module.exports = {
         allExtensions: true, // defaults to false
       },
     },
+    "gatsby-plugin-webpack-bundle-analyser-v2",
     //`gatsby-plugin-graphql-codegen`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

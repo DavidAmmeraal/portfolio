@@ -1,7 +1,6 @@
 module.exports = {
   plugins: [
-    require("postcss-import")({
-    }),
+    require("postcss-import")(),
     require("tailwindcss")("./src/tailwind.config.js"),
     require("postcss-preset-env")({
       autoprefixer: { grid: false },
@@ -11,4 +10,4 @@ module.exports = {
       browsers: ["> 1%", "last 2 versions", "Firefox ESR"],
     }),
   ],
-}
+};

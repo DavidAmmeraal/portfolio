@@ -11,13 +11,18 @@ import { SeoQuery } from "../../graphql-types";
 import { useStaticQuery, graphql } from "gatsby";
 
 type SEOProps = {
-  description: string;
-  lang: string;
-  title: string;
-  meta: React.ComponentProps<typeof Helmet>["meta"];
+  description?: string;
+  lang?: string;
+  title?: string;
+  meta?: React.ComponentProps<typeof Helmet>["meta"];
 };
 
-const SEO: React.FC<SEOProps> = ({ description, lang, meta, title }) => {
+const SEO: React.FC<SEOProps> = ({
+  description,
+  lang = "en",
+  meta = [],
+  title,
+}) => {
   const { site }: SeoQuery = useStaticQuery(
     graphql`
       query SEO {
