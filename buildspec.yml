@@ -4,16 +4,16 @@ phases:
         runtime-versions:
             nodejs: 12
         commands:
-            - ‘npm install -g gatsby’
+            - npm install -g gatsby
     pre_build:
         commands:
-            - ‘npm install’
+            - npm install
     build:
         commands:
-            - ‘npm run build’
+            - npm run build
     post_build:
         commands:
-            - ‘npm run deploy’
+            - npm run deploy
 artifacts:
     base-directory: public
     files:
