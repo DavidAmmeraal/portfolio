@@ -14,5 +14,9 @@ phases:
 artifacts:
     base-directory: public
     files:
-        - ‘**/*’
-    discard-paths: yes
+        - '**/*'
+    discard-paths: no
+cache:
+    paths:
+        - '.cache/*'
+        - 'public/*'
