@@ -1,3 +1,7 @@
+const targetAddress = new URL(
+  process.env.TARGET_ADDRESS || `http://blog.joshwalsh.local`
+);
+
 module.exports = {
   siteMetadata: {
     title: `David Ammeraal`,
@@ -68,7 +72,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "davidammeraal-portfolio-bucket",
+        bucketName: process.env.TARGET_BUCKET_NAME || "fake-bucket",
+        region: process.env.AWS_REGION,
+        protocol: targetAddress.protocol.slice(0, -1),
+        hostname: targetAddress.hostname,
+        acl: null,
       },
     },
     //`gatsby-plugin-graphql-codegen`
