@@ -1,6 +1,8 @@
 const targetAddress = new URL(
-  process.env.TARGET_ADDRESS || `http://blog.joshwalsh.local`
+  process.env.TARGET_ADDRESS || `http://davidammeraal.local`
 );
+
+console.log("Building static site for address: ", targetAddress);
 
 module.exports = {
   siteMetadata: {
@@ -85,6 +87,7 @@ module.exports = {
         siteUrl: targetAddress.href.slice(0, -1),
       },
     },
+    `gatsby-plugin-force-trailing-slashes`,
     //`gatsby-plugin-graphql-codegen`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

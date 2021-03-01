@@ -53,7 +53,7 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             in NodeJS.
           </p>
           <div className="flex space-x-5 flex-wrap">
-            <Button color="orange" href="/contact" tabIndex={0}>
+            <Button color="orange" href="/contact/" tabIndex={0}>
               Get in contact
             </Button>
             <Button
