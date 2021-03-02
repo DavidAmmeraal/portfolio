@@ -13,6 +13,7 @@ import { linkClasses, textClasses } from "../classes";
 import SocialMedia from "../components/social-media";
 import ContactForm, { ContactFormData } from "../components/contact-form";
 import SEO from "../components/seo";
+import { submitContactForm } from "../api";
 
 type ContactPageState = {
   showForm: boolean;
@@ -32,24 +33,6 @@ const initialState = {
   formBusy: false,
 };
 
-function submitFormSuccess(data: ContactFormData) {
-  // throw new Error("Something went wrong!");
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(undefined);
-    }, 2000);
-  });
-}
-
-function submitFormError(data: ContactFormData) {
-  // throw new Error("Something went wrong!");
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject(new Error("Some err"));
-    }, 2000);
-  });
-}
-
 const ContactPage: React.FC<unknown> = () => {
   const [state, setState] = useState<ContactPageState>(initialState);
 
@@ -66,7 +49,7 @@ const ContactPage: React.FC<unknown> = () => {
       if (state.formData) {
         setState((s) => ({ ...s, formBusy: true }));
         try {
-          await submitFormSuccess(state.formData);
+          await submitContactForm(state.formData);
           setState((s) => ({
             ...s,
             formBusy: false,
