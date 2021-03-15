@@ -17,7 +17,7 @@ const StyledProfilePicture = styled(ProfilePicture)`
 
 const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
   const openEmail = () => {
-    window.location.href = `mailto:${atob("bWVAZGF2aWRhbW1lcmFhbC5jb20=")}`;
+    window.location.href = `mailto:${atob("aW5mb0BkYXZpZGFtbWVyYWFsLm5s")}`;
   };
 
   const [show, setShow] = useState(false);
