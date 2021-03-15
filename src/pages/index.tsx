@@ -48,27 +48,40 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             "lg:pt-12",
             "lg:w-96",
             "lg:justify-center",
-            "lg:p-5",
-            "transform-gpu ease-in-out",
-            show
-              ? "duration-500 opacity-1 translate-x-0"
-              : "opacity-0 -translate-x-full"
+            "lg:p-5"
           )}
         >
           <div className="flex flex-col lg:flex-row space-x-4 items-center md:items-start">
             <StyledProfilePicture className="w-1/3 rounded-full" />
           </div>
-          <h1 className={textClasses["display-1"]}>
-            Hello, I'm <span className="text-orange-500">David Ammeraal</span>,{" "}
-            <br /> a full-stack developer located in Hilversum.
-            <SocialMedia className="lg:hidden" />
-          </h1>
-          <p className="text-gray-300 tracking-loose max-w-prose mb-4">
-            Thank you for taking the time to have a look at my portfolio. I
-            specialize in JavaScript/TypeScript development in the front-end and
-            in NodeJS.
-          </p>
-          <div className="flex space-x-5 flex-wrap">
+          <div
+            className={cx(
+              "lg:transform-gpu ease-in-out",
+              show
+                ? "lg:duration-500 lg:opacity-1 lg:translate-y-0"
+                : "lg:opacity-0 lg:translate-y-96"
+            )}
+          >
+            <h1 className={textClasses["display-1"]}>
+              Hello, I'm <span className="text-orange-500">David Ammeraal</span>
+              , <br /> a full-stack developer located in Hilversum.
+              <SocialMedia className="lg:hidden" />
+            </h1>
+            <p className="text-gray-300 tracking-loose max-w-prose mb-4">
+              Thank you for taking the time to have a look at my portfolio. I
+              specialize in JavaScript/TypeScript development in the front-end
+              and in NodeJS.
+            </p>
+          </div>
+          <div
+            className={cx(
+              "flex space-x-5 flex-wrap",
+              "lg:transform-gpu lg:ease-in-out",
+              show
+                ? "lg:duration-500 lg:opacity-1 lg:translate-y-0"
+                : "lg:opacity-0 lg:translate-y-96"
+            )}
+          >
             <Button color="orange" tabIndex={0} onClick={openEmail}>
               Get in contact
             </Button>
@@ -86,10 +99,10 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
           <header
             className={cx(
               "mb-10",
-              "transform-gpu ease-in-out",
+              "lg:transform-gpu lg:ease-in-out",
               show
-                ? "duration-500 opacity-1 translate-y-0"
-                : "opacity-0 -translate-y-full"
+                ? "lg:duration-500 lg:opacity-1 lg:translate-y-0"
+                : "lg:pacity-0 lg:-translate-y-96"
             )}
           >
             <p className={textClasses["subtitle"]}>projects</p>
@@ -99,10 +112,10 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             <Project
               data={entry.node}
               className={cx(
-                "transform-gpu ease-in-out mb-5",
+                "lg:transform-gpu lg:ease-in-out mb-5",
                 show
-                  ? "duration-500 opacity-1 translate-x-0"
-                  : "opacity-0 translate-x-full"
+                  ? "lg:duration-500 lg:opacity-1 lg:translate-x-0"
+                  : "lg:opacity-0 lg:translate-x-96"
               )}
               style={show ? { transitionDelay: `${0.1 * index}s` } : {}}
             />
