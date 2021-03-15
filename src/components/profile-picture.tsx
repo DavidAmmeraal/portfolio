@@ -7,9 +7,8 @@ const ProfilePicture = (props: React.ComponentProps<typeof Img>) => {
     query {
       file(relativePath: { eq: "mugshot.jpg" }) {
         childImageSharp {
-          # Specify a fixed image and fragment.
-          fluid(maxWidth: 250, maxHeight: 250, quality: 100) {
-            ...GatsbyImageSharpFluid
+          fluid(maxWidth: 250, maxHeight: 250, quality: 80) {
+            ...GatsbyImageSharpFluid_withWebp
             ...GatsbyImageSharpFluidLimitPresentationSize
           }
         }

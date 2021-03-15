@@ -3,10 +3,15 @@ import cx from "classnames";
 import { linkClasses } from "../classes";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
+const id = function () {
+  return Math.random().toString(36).substr(2, 9);
+};
+
 const SocialMedia: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   ...rest
 }) => {
+  const uid = id();
   return (
     <div
       className={cx("flex space-x-4 items-end mt-5 text-gray-50", className)}
@@ -19,8 +24,11 @@ const SocialMedia: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         className={cx(linkClasses)}
         tabIndex={0}
       >
-        <FaGithub className="text-4xl" aria-labelledby="socialGithub" />
-        <span id="socialGithub" className="hidden">
+        <FaGithub
+          className="text-4xl"
+          aria-labelledby={`socialGithub_${uid}`}
+        />
+        <span id={`socialGithub_${uid}`} className="hidden">
           Go to my github page
         </span>
       </a>
@@ -30,8 +38,11 @@ const SocialMedia: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         className={cx(linkClasses)}
         tabIndex={0}
       >
-        <FaLinkedin className="text-4xl" aria-labelledby="linkedIn" />
-        <span id="linkedIn" className="hidden">
+        <FaLinkedin
+          className="text-4xl"
+          aria-labelledby={`socialLinkedIn_${uid}`}
+        />
+        <span id={`socialLinkedIn_${uid}`} className="hidden">
           Go to my linkedin page
         </span>
       </a>
