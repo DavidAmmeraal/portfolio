@@ -5,6 +5,8 @@ title: qandr
 
 Web app to poll audiences through their smartphones and visualize opinions.
 
+<a href="https://www.qandr.com">visit qandr product site</a>
+
 <mono>
   javascript, d3
 </mono>

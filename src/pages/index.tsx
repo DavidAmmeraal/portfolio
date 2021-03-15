@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { graphql, PageProps } from "gatsby";
 import cx from "classnames";
 import ProfilePicture from "../components/profile-picture";
@@ -16,10 +16,22 @@ const StyledProfilePicture = styled(ProfilePicture)`
 `;
 
 const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
+  const openEmail = () => {
+    window.location.href = `mailto:${atob("aW5mb0BkYXZpZGFtbWVyYWFsLm5s")}`;
+  };
+
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(true);
+    }, 500);
+  }, []);
+
   return (
     <Layout>
       <SEO title="A full stack developer" />
-      <div className="flex flex-col lg:flex-row">
+      <div className={cx("flex flex-col lg:flex-row")}>
         <div
           className={cx(
             "flex",
@@ -36,7 +48,11 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             "lg:pt-12",
             "lg:w-96",
             "lg:justify-center",
-            "lg:p-5"
+            "lg:p-5",
+            "transform-gpu ease-in-out",
+            show
+              ? "duration-500 opacity-1 translate-x-0"
+              : "opacity-0 -translate-x-full"
           )}
         >
           <div className="flex flex-col lg:flex-row space-x-4 items-center md:items-start">
@@ -53,7 +69,7 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             in NodeJS.
           </p>
           <div className="flex space-x-5 flex-wrap">
-            <Button color="orange" href="/contact" tabIndex={0}>
+            <Button color="orange" tabIndex={0} onClick={openEmail}>
               Get in contact
             </Button>
             <Button
@@ -66,13 +82,30 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             <SocialMedia className="hidden lg:flex" />
           </div>
         </div>
-        <div className="flex flex-col space-y-10 mt-12 mb-5">
-          <header>
+        <div className="flex flex-col mt-12 mb-5">
+          <header
+            className={cx(
+              "mb-10",
+              "transform-gpu ease-in-out",
+              show
+                ? "duration-500 opacity-1 translate-y-0"
+                : "opacity-0 -translate-y-full"
+            )}
+          >
             <p className={textClasses["subtitle"]}>projects</p>
             <h2 className={textClasses["heading-1"]}>things I've worked on</h2>
           </header>
-          {data.allMdx.edges.map((entry) => (
-            <Project data={entry.node} />
+          {data.allMdx.edges.map((entry, index) => (
+            <Project
+              data={entry.node}
+              className={cx(
+                "transform-gpu ease-in-out mb-5",
+                show
+                  ? "duration-500 opacity-1 translate-x-0"
+                  : "opacity-0 translate-x-full"
+              )}
+              style={show ? { transitionDelay: `${0.1 * index}s` } : {}}
+            />
           ))}
         </div>
       </div>
@@ -86,11 +119,7 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          frontmatter {
-            subtitle
-            title
-          }
-          body
+          ...Project
         }
       }
     }

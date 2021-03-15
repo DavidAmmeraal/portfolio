@@ -1,3 +1,9 @@
+const targetAddress = new URL(
+  process.env.TARGET_ADDRESS || `http://davidammeraal.local`
+);
+
+console.log("Building static site for address: ", targetAddress);
+
 module.exports = {
   siteMetadata: {
     title: `David Ammeraal`,
@@ -25,20 +31,19 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-postcss`,
-      options: {},
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `david-ammeraal-portfolio`,
+        short_name: `porfolio`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#20252d`,
+        theme_color: `#FF4000`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`,
       },
     },
     {
@@ -68,10 +73,21 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "davidammeraal-portfolio-bucket",
+        bucketName: process.env.TARGET_BUCKET_NAME || "fake-bucket",
+        region: process.env.AWS_REGION,
+        protocol: targetAddress.protocol.slice(0, -1),
+        hostname: targetAddress.hostname,
+        acl: null,
       },
     },
-    //`gatsby-plugin-graphql-codegen`
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: targetAddress.href.slice(0, -1),
+      },
+    },
+    `gatsby-plugin-force-trailing-slashes`,
+    //`gatsby-plugin-graphql-codegen`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
