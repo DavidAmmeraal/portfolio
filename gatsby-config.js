@@ -31,24 +31,21 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-postcss`,
-      options: {},
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    /*
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `david-ammeraal-portfolio`,
+        short_name: `porfolio`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#20252d`,
+        theme_color: `#FF4000`,
         display: `minimal-ui`,
-        icon: ``,
+        icon: `src/images/favicon.png`,
       },
     },
-    */
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -90,7 +87,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-force-trailing-slashes`,
-    //`gatsby-plugin-graphql-codegen`
+    //`gatsby-plugin-graphql-codegen`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
