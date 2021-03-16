@@ -15,17 +15,38 @@ const StyledProfilePicture = styled(ProfilePicture)`
   box-shadow: -10px -10px 0px -2px #121519;
 `;
 
+enum Transition {
+  Idle,
+  Start,
+  Finish,
+}
+
+function sleep(duration: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, duration);
+  });
+}
+
 const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
   const openEmail = () => {
     window.location.href = `mailto:${atob("aW5mb0BkYXZpZGFtbWVyYWFsLm5s")}`;
   };
 
-  const [show, setShow] = useState(false);
+  const [transitionState, setTransitionState] = useState(Transition.Idle);
 
   useEffect(() => {
-    setTimeout(() => {
-      setShow(true);
-    }, 500);
+    async function transition() {
+      const cachedOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      await sleep(250);
+      setTransitionState(Transition.Start);
+      await sleep(500);
+      setTransitionState(Transition.Finish);
+      document.body.style.overflow = cachedOverflow;
+    }
+    transition();
   }, []);
 
   return (
@@ -57,9 +78,10 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
           <div
             className={cx(
               "lg:transform-gpu ease-in-out",
-              show
-                ? "lg:duration-500 lg:opacity-1 lg:translate-y-0"
-                : "lg:opacity-0 lg:translate-y-96"
+              transitionState === Transition.Idle &&
+                "lg:opacity-0 lg:translate-y-96",
+              transitionState === Transition.Start &&
+                "lg:duration-500 lg:opacity-1 lg:translate-y-0"
             )}
           >
             <h1 className={textClasses["display-1"]}>
@@ -77,9 +99,10 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             className={cx(
               "flex space-x-5 flex-wrap",
               "lg:transform-gpu lg:ease-in-out",
-              show
-                ? "lg:duration-500 lg:opacity-1 lg:translate-y-0"
-                : "lg:opacity-0 lg:translate-y-96"
+              transitionState === Transition.Idle &&
+                "lg:opacity-0 lg:translate-y-96",
+              transitionState === Transition.Start &&
+                "lg:duration-500 lg:opacity-1 lg:translate-y-0"
             )}
           >
             <Button color="orange" tabIndex={0} onClick={openEmail}>
@@ -100,9 +123,10 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             className={cx(
               "mb-10",
               "lg:transform-gpu lg:ease-in-out",
-              show
-                ? "lg:duration-500 lg:opacity-1 lg:translate-y-0"
-                : "lg:pacity-0 lg:-translate-y-96"
+              transitionState === Transition.Idle &&
+                "lg:opacity-0 lg:-translate-y-96",
+              transitionState === Transition.Start &&
+                "lg:duration-500 lg:opacity-1 lg:translate-y-0"
             )}
           >
             <p className={textClasses["subtitle"]}>projects</p>
@@ -113,11 +137,16 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
               data={entry.node}
               className={cx(
                 "lg:transform-gpu lg:ease-in-out mb-5",
-                show
-                  ? "lg:duration-500 lg:opacity-1 lg:translate-x-0"
-                  : "lg:opacity-0 lg:translate-x-96"
+                transitionState === Transition.Idle &&
+                  "lg:opacity-0 lg:translate-y-96",
+                transitionState === Transition.Start &&
+                  "lg:duration-500 lg:opacity-1 lg:translate-y-0"
               )}
-              style={show ? { transitionDelay: `${0.1 * index}s` } : {}}
+              style={
+                transitionState === Transition.Start
+                  ? { transitionDelay: `${0.1 * index}s` }
+                  : {}
+              }
             />
           ))}
         </div>

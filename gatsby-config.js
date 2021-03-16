@@ -2,8 +2,6 @@ const targetAddress = new URL(
   process.env.TARGET_ADDRESS || `http://davidammeraal.local`
 );
 
-console.log("Building static site for address: ", targetAddress);
-
 module.exports = {
   siteMetadata: {
     title: `David Ammeraal`,
