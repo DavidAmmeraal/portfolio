@@ -15,7 +15,7 @@ const Layout: React.FC = (props) => {
     <>
       <Helmet
         bodyAttributes={{
-          class: "bg-gray-900 dark text-white",
+          class: "bg-gray-900 dark text-white overflow-x-hidden",
         }}
       />
       <Container>{props.children}</Container>

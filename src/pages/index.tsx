@@ -38,13 +38,10 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
 
   useEffect(() => {
     async function transition() {
-      const cachedOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
       await sleep(250);
       setTransitionState(Transition.Start);
       await sleep(500);
       setTransitionState(Transition.Finish);
-      document.body.style.overflow = cachedOverflow;
     }
     transition();
   }, []);
@@ -89,10 +86,10 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
               , <br /> a full-stack developer located in Hilversum.
               <SocialMedia className="lg:hidden" />
             </h1>
-            <p className="text-gray-300 tracking-loose max-w-prose mb-4">
-              Thank you for taking the time to have a look at my portfolio. I
-              specialize in JavaScript/TypeScript development in the front-end
-              and in NodeJS.
+            <p className="text-gray-300 tracking-loose max-w-prose my-4">
+              Thank you for taking the time to have a look at my portfolio. I'm
+              a software engineer, specializing in JavaScript/TypeScript in the
+              frontend and NodeJS.
             </p>
           </div>
           <div
@@ -138,9 +135,9 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
               className={cx(
                 "lg:transform-gpu lg:ease-in-out mb-5",
                 transitionState === Transition.Idle &&
-                  "lg:opacity-0 lg:translate-y-96",
+                  "lg:opacity-0 lg:translate-x-96",
                 transitionState === Transition.Start &&
-                  "lg:duration-500 lg:opacity-1 lg:translate-y-0"
+                  "lg:duration-500 lg:opacity-1 lg:translate-x-0"
               )}
               style={
                 transitionState === Transition.Start
