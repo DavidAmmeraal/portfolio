@@ -5,7 +5,7 @@ const targetAddress = new URL(
 module.exports = {
   siteMetadata: {
     title: `David Ammeraal`,
-    description: `David Ammeraal, a full-stack developer located in Hilversum.`,
+    description: `David Ammeraal, a front end engineer located in Hilversum.`,
     author: `David Ammeraal`,
   },
   plugins: [

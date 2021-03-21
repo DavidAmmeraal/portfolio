@@ -82,13 +82,13 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
           >
             <h1 className={textClasses["display-1"]}>
               Hello, I'm <span className="text-orange-500">David Ammeraal</span>
-              , <br /> a full-stack developer located in Hilversum.
+              , <br /> a front end engineer located in Hilversum.
               <SocialMedia className="lg:hidden" />
             </h1>
             <p className="text-gray-300 tracking-loose max-w-prose my-4">
               Thank you for taking the time to have a look at my portfolio. I'm
               a software engineer, specializing in JavaScript/TypeScript in the
-              frontend and NodeJS.
+              front end and NodeJS.
             </p>
           </div>
           <div
@@ -106,7 +106,7 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             </Button>
             <Button
               color="indigo"
-              href="/20210225_davidammeraal-cv.pdf"
+              href="/20210321_davidammeraal-cv.pdf"
               tabIndex={0}
             >
               Read my C.V.
