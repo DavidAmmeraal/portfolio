@@ -106,7 +106,7 @@ const IndexPage: React.FC<PageProps<BlogIndexQuery>> = ({ data }) => {
             </Button>
             <Button
               color="indigo"
-              href="/20210321_davidammeraal-cv.pdf"
+              href="/20210322_cv_davidammeraal-compressed.pdf"
               tabIndex={0}
             >
               Read my C.V.
